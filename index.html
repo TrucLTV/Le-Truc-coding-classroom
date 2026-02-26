@@ -1069,7 +1069,160 @@
     overflow: hidden;
     border: 1px solid var(--border);
   }
-  .vm-img-preview img { width: 100%; display: block; max-height: 400px; object-fit: contain; background: #000; }
+  .vm-img-preview img { width: 100%; display: block; max-height: 400px; object-fit: contain; background: #000; cursor: zoom-in; }
+
+  /* ─── FILE VIEWER MODAL ─── */
+  .file-viewer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.92);
+    backdrop-filter: blur(8px);
+    z-index: 600;
+    display: none;
+    flex-direction: column;
+  }
+  .file-viewer-overlay.open { display: flex; }
+
+  .fv-header {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding: .8rem 1.2rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .fv-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .fv-name { font-size: .92rem; font-weight: 700; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fv-size { font-size: .78rem; color: var(--muted); font-family: var(--mono); flex-shrink: 0; }
+  .fv-actions { display: flex; gap: .5rem; flex-shrink: 0; }
+
+  .fv-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: .82rem;
+    font-weight: 600;
+    padding: .4rem .85rem;
+    cursor: pointer;
+    transition: all .2s;
+    display: flex; align-items: center; gap: .35rem;
+    text-decoration: none;
+  }
+  .fv-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .fv-btn.close { border-color: transparent; color: var(--muted); }
+  .fv-btn.close:hover { border-color: var(--danger); color: var(--danger); }
+
+  .fv-body {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0a0f;
+  }
+
+  /* PDF viewer */
+  .fv-body iframe {
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  /* Image viewer */
+  .fv-img-wrap {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+  }
+  .fv-img-wrap.grabbing { cursor: grabbing; }
+  .fv-img-wrap img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain;
+    transition: transform .15s ease;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .fv-zoom-bar {
+    position: absolute;
+    bottom: 1rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; align-items: center; gap: .5rem;
+    background: rgba(17,24,39,.9);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: .35rem .8rem;
+    backdrop-filter: blur(8px);
+    z-index: 10;
+  }
+  .fv-zoom-bar button {
+    background: none; border: none; color: var(--text);
+    font-size: 1rem; cursor: pointer; width: 26px; height: 26px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    transition: background .15s;
+  }
+  .fv-zoom-bar button:hover { background: rgba(255,255,255,.1); }
+  .fv-zoom-pct { font-family: var(--mono); font-size: .78rem; color: var(--muted); min-width: 42px; text-align: center; }
+
+  /* Code viewer */
+  .fv-code-wrap {
+    width: 100%; height: 100%;
+    overflow: auto;
+    padding: 1.5rem 2rem;
+  }
+  .fv-code-wrap pre {
+    font-family: var(--mono);
+    font-size: .85rem;
+    color: #94d1e0;
+    line-height: 1.75;
+    white-space: pre;
+    tab-size: 4;
+  }
+
+  /* Text / unsupported */
+  .fv-text-wrap {
+    width: 100%; height: 100%;
+    overflow: auto;
+    padding: 1.5rem 2rem;
+  }
+  .fv-text-wrap pre {
+    font-family: var(--sans);
+    font-size: .9rem;
+    color: var(--text);
+    line-height: 1.75;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .fv-unsupported {
+    text-align: center; color: var(--muted);
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .fv-unsupported .big { font-size: 3rem; }
+  .fv-unsupported p { font-size: .95rem; line-height: 1.6; }
+
+  /* view-in-page button on card attach row */
+  .card-attach-view {
+    margin-left: auto;
+    flex-shrink: 0;
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 5px;
+    color: var(--accent);
+    font-size: .72rem;
+    font-weight: 700;
+    padding: .15rem .55rem;
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+    font-family: var(--sans);
+  }
+  .card-attach-view:hover { background: rgba(0,212,255,0.18); }
 
   /* ─── SCROLLBAR ─── */
   ::-webkit-scrollbar { width: 6px; }
@@ -1301,6 +1454,20 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- ─── FILE VIEWER MODAL ─── -->
+<div class="file-viewer-overlay" id="fileViewer">
+  <div class="fv-header">
+    <span class="fv-icon" id="fv-icon">📄</span>
+    <span class="fv-name" id="fv-name">filename.pdf</span>
+    <span class="fv-size" id="fv-size"></span>
+    <div class="fv-actions">
+      <a class="fv-btn" id="fv-download" download>⬇️ Tải xuống</a>
+      <button class="fv-btn close" onclick="closeFileViewer()">✕ Đóng</button>
+    </div>
+  </div>
+  <div class="fv-body" id="fv-body"></div>
 </div>
 
 <!-- ─── TEACHER LOGIN MODAL ─── -->
@@ -1545,7 +1712,145 @@ function renderStats() {
   `;
 }
 
-// ─── ATTACHMENT LOGIC ─────────────────────────────────────────
+// ─── FILE VIEWER ──────────────────────────────────────────────
+const CODE_EXTS = ['py','js','ts','html','css','cpp','c','java','json','xml','sql','sh','php','rb','go','rs','txt','md','csv'];
+
+function openFileViewer(a) {
+  if (!a || a.type !== 'file') return;
+  const ext  = a.name.split('.').pop().toLowerCase();
+  const icon = getFileIcon(a.mime || '', a.name);
+  document.getElementById('fv-icon').textContent = icon;
+  document.getElementById('fv-name').textContent = a.name;
+  document.getElementById('fv-size').textContent = formatFileSize(a.size);
+  const dl = document.getElementById('fv-download');
+  dl.href = a.dataUrl;
+  dl.download = a.name;
+
+  const body = document.getElementById('fv-body');
+  body.innerHTML = '';
+
+  if (a.mime && a.mime.startsWith('image/')) {
+    renderImageViewer(body, a.dataUrl, a.name);
+  } else if (a.mime === 'application/pdf' || ext === 'pdf') {
+    renderPdfViewer(body, a.dataUrl);
+  } else if (CODE_EXTS.includes(ext)) {
+    renderCodeViewer(body, a.dataUrl, ext);
+  } else if (['doc','docx','ppt','pptx','xls','xlsx'].includes(ext)) {
+    // Google Docs Viewer — cần URL công khai, hiển thị hướng dẫn thay thế
+    renderOfficeViewer(body, a);
+  } else {
+    renderUnsupported(body, a);
+  }
+
+  document.getElementById('fileViewer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFileViewer() {
+  document.getElementById('fileViewer').classList.remove('open');
+  document.getElementById('fv-body').innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+// ESC key to close
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeFileViewer();
+});
+
+function renderImageViewer(body, src, name) {
+  let scale = 1, originX = 0, originY = 0;
+  let dragging = false, startX = 0, startY = 0, transX = 0, transY = 0;
+
+  body.innerHTML = `
+    <div class="fv-img-wrap" id="fvImgWrap">
+      <img id="fvImg" src="${src}" alt="${esc(name)}">
+    </div>
+    <div class="fv-zoom-bar">
+      <button onclick="fvZoom(-0.25)" title="Thu nhỏ">－</button>
+      <span class="fv-zoom-pct" id="fvZoomPct">100%</span>
+      <button onclick="fvZoom(+0.25)" title="Phóng to">＋</button>
+      <button onclick="fvZoomReset()" title="Đặt lại" style="font-size:.72rem;padding:0 .3rem">↺ Reset</button>
+    </div>`;
+
+  const wrap = document.getElementById('fvImgWrap');
+  const img  = document.getElementById('fvImg');
+
+  window.fvZoom = (delta) => {
+    scale = Math.min(Math.max(0.25, scale + delta), 5);
+    updateTransform();
+  };
+  window.fvZoomReset = () => { scale = 1; transX = 0; transY = 0; updateTransform(); };
+
+  function updateTransform() {
+    img.style.transform = `translate(${transX}px, ${transY}px) scale(${scale})`;
+    document.getElementById('fvZoomPct').textContent = Math.round(scale * 100) + '%';
+  }
+
+  // Mouse drag
+  wrap.addEventListener('mousedown', e => { dragging = true; startX = e.clientX - transX; startY = e.clientY - transY; wrap.classList.add('grabbing'); });
+  document.addEventListener('mousemove', e => { if (!dragging) return; transX = e.clientX - startX; transY = e.clientY - startY; updateTransform(); });
+  document.addEventListener('mouseup', () => { dragging = false; wrap.classList.remove('grabbing'); });
+
+  // Scroll to zoom
+  wrap.addEventListener('wheel', e => { e.preventDefault(); fvZoom(e.deltaY < 0 ? 0.15 : -0.15); }, { passive: false });
+
+  // Double click to zoom
+  img.addEventListener('dblclick', () => { scale === 1 ? fvZoom(1) : fvZoomReset(); });
+}
+
+function renderPdfViewer(body, dataUrl) {
+  body.innerHTML = `<iframe src="${dataUrl}" title="PDF Viewer"></iframe>`;
+}
+
+function renderCodeViewer(body, dataUrl, ext) {
+  // Decode base64 content
+  try {
+    const base64 = dataUrl.split(',')[1];
+    const text   = decodeURIComponent(escape(atob(base64)));
+    body.innerHTML = `<div class="fv-code-wrap"><pre id="fvCodePre"></pre></div>`;
+    document.getElementById('fvCodePre').textContent = text;
+  } catch(e) {
+    body.innerHTML = `<div class="fv-unsupported"><div class="big">⚠️</div><p>Không thể đọc nội dung file.</p></div>`;
+  }
+}
+
+function renderOfficeViewer(body, a) {
+  // Word/PPT/Excel files can't be embedded from base64 locally.
+  // Show a clear preview card with download CTA.
+  const icon = getFileIcon(a.mime || '', a.name);
+  const ext  = a.name.split('.').pop().toUpperCase();
+  const tips = {
+    'DOC':'Word', 'DOCX':'Word', 'PPT':'PowerPoint', 'PPTX':'PowerPoint',
+    'XLS':'Excel', 'XLSX':'Excel'
+  };
+  const appName = tips[ext] || 'Office';
+  body.innerHTML = `
+    <div class="fv-unsupported">
+      <div class="big">${icon}</div>
+      <p><strong style="color:var(--text)">${esc(a.name)}</strong><br>
+      File ${appName} không thể xem trực tiếp trong trình duyệt.<br>
+      <span style="font-size:.85rem">Vui lòng tải xuống để mở bằng ${appName}.</span></p>
+      <a class="fv-btn" href="${a.dataUrl}" download="${esc(a.name)}" style="background:var(--accent);color:var(--bg);border-color:var(--accent);font-size:.9rem;padding:.6rem 1.4rem">
+        ⬇️ Tải xuống và mở bằng ${appName}
+      </a>
+      <p style="font-size:.78rem;margin-top:.5rem;opacity:.6">💡 Mẹo: Dùng Google Drive để chia sẻ file ${appName} — học sinh xem được ngay không cần tải</p>
+    </div>`;
+}
+
+function renderUnsupported(body, a) {
+  const icon = getFileIcon(a.mime || '', a.name);
+  body.innerHTML = `
+    <div class="fv-unsupported">
+      <div class="big">${icon}</div>
+      <p><strong style="color:var(--text)">${esc(a.name)}</strong><br>
+      Trình duyệt không thể hiển thị loại file này trực tiếp.</p>
+      <a class="fv-btn" href="${a.dataUrl}" download="${esc(a.name)}" style="background:var(--accent);color:var(--bg);border-color:var(--accent);font-size:.9rem;padding:.6rem 1.4rem">
+        ⬇️ Tải xuống ${esc(a.name)}
+      </a>
+    </div>`;
+}
+
+// ─── FILE VIEWER ──────────────────────────────────────────────
 let currentAttachType = 'file'; // 'file' | 'youtube' | 'link'
 let pendingFileData   = null;   // { name, size, type, dataUrl }
 
@@ -1900,11 +2205,14 @@ function deleteItem(id) {
 function renderCardAttach(a) {
   if (!a) return '';
   if (a.type === 'file') {
-    const icon = getFileIcon(a.mime || '', a.name);
-    return `<a class="card-attach" href="${a.dataUrl}" download="${esc(a.name)}" onclick="event.stopPropagation()">
-      <span>${icon}</span><span>${esc(a.name)}</span>
-      <span style="margin-left:auto;font-size:.7rem;opacity:.6">${formatFileSize(a.size)}</span>
-    </a>`;
+    const icon    = getFileIcon(a.mime || '', a.name);
+    const canView = canViewInBrowser(a.mime || '', a.name);
+    const idx     = items.findIndex(it => it.attach === a);
+    return `<div class="card-attach" onclick="event.stopPropagation()">
+      <span>${icon}</span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(a.name)}</span>
+      <span style="font-size:.7rem;opacity:.6;flex-shrink:0">${formatFileSize(a.size)}</span>
+      ${canView ? `<button class="card-attach-view" onclick="event.stopPropagation();openFileViewerById(${items.findIndex(it=>it.attach===a)})">👁 Xem</button>` : `<a href="${a.dataUrl}" download="${esc(a.name)}" onclick="event.stopPropagation()" style="flex-shrink:0;font-size:.72rem;color:var(--muted)">⬇️</a>`}
+    </div>`;
   }
   if (a.type === 'youtube') {
     return `<div class="card-attach" style="cursor:default;opacity:.85">
@@ -1917,6 +2225,20 @@ function renderCardAttach(a) {
     </a>`;
   }
   return '';
+}
+
+function canViewInBrowser(mime, name) {
+  if (!name) return false;
+  const ext = name.split('.').pop().toLowerCase();
+  if (mime && mime.startsWith('image/')) return true;
+  if (mime === 'application/pdf' || ext === 'pdf') return true;
+  if (CODE_EXTS.includes(ext)) return true;
+  return false;
+}
+
+function openFileViewerById(idx) {
+  const it = items[idx];
+  if (it && it.attach) openFileViewer(it.attach);
 }
 
 function viewItem(id) {
@@ -1938,19 +2260,27 @@ function viewItem(id) {
     attachWrap.style.display = 'block';
     const a = it.attach;
     if (a.type === 'file') {
-      const icon = getFileIcon(a.mime || '', a.name);
-      if (a.mime && a.mime.startsWith('image/')) {
-        attachContent.innerHTML = `
-          <div class="vm-img-preview"><img src="${a.dataUrl}" alt="${esc(a.name)}"></div>
-          <a class="vm-attach-btn" href="${a.dataUrl}" download="${esc(a.name)}">
-            ⬇️ Tải xuống ${esc(a.name)} <span style="opacity:.6;font-size:.78rem">(${formatFileSize(a.size)})</span>
-          </a>`;
-      } else {
-        attachContent.innerHTML = `
-          <a class="vm-attach-btn" href="${a.dataUrl}" download="${esc(a.name)}">
-            ${icon} Tải xuống ${esc(a.name)} <span style="opacity:.6;font-size:.78rem">(${formatFileSize(a.size)})</span>
-          </a>`;
+      const icon     = getFileIcon(a.mime || '', a.name);
+      const canView  = canViewInBrowser(a.mime || '', a.name);
+      const isImage  = a.mime && a.mime.startsWith('image/');
+      let html = '';
+      if (isImage) {
+        html += `<div class="vm-img-preview" style="cursor:zoom-in" onclick="openFileViewer(items.find(x=>x.id===${it.id}).attach)">
+          <img src="${a.dataUrl}" alt="${esc(a.name)}">
+          <div style="text-align:center;padding:.4rem;font-size:.75rem;color:var(--muted)">🔍 Nhấn để xem toàn màn hình</div>
+        </div>`;
       }
+      html += `<div style="display:flex;gap:.6rem;margin-top:.7rem;flex-wrap:wrap">`;
+      if (canView) {
+        html += `<button class="vm-attach-btn" onclick="openFileViewer(items.find(x=>x.id===${it.id}).attach)">
+          ${icon} Xem ${esc(a.name)} <span style="opacity:.6;font-size:.78rem">(${formatFileSize(a.size)})</span>
+        </button>`;
+      }
+      html += `<a class="vm-attach-btn" href="${a.dataUrl}" download="${esc(a.name)}" style="opacity:.7">
+        ⬇️ Tải xuống
+      </a>`;
+      html += `</div>`;
+      attachContent.innerHTML = html;
     } else if (a.type === 'youtube') {
       attachContent.innerHTML = `
         <div class="vm-embed">
