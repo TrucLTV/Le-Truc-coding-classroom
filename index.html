@@ -7,17 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0e1a;
-    --surface: #111827;
-    --surface2: #1a2235;
-    --border: #1e2d45;
-    --accent: #00d4ff;
-    --accent2: #7c3aed;
-    --accent3: #10b981;
-    --warn: #f59e0b;
-    --danger: #ef4444;
-    --text: #e2e8f0;
-    --muted: #64748b;
+    --bg: #f0f6ff;
+    --surface: #ffffff;
+    --surface2: #e8f1fb;
+    --border: #c3d9f5;
+    --accent: #1a6fdb;
+    --accent2: #6d28d9;
+    --accent3: #059669;
+    --warn: #d97706;
+    --danger: #dc2626;
+    --text: #0f172a;
+    --muted: #4a6a8a;
     --mono: 'JetBrains Mono', monospace;
     --sans: 'Be Vietnam Pro', sans-serif;
   }
@@ -42,8 +42,8 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(26,111,219,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,111,219,0.07) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
@@ -54,7 +54,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(10,14,26,0.85);
+    background: rgba(240,246,255,0.92);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     padding: 0 2rem;
@@ -62,6 +62,7 @@
     align-items: center;
     justify-content: space-between;
     height: 64px;
+    box-shadow: 0 1px 12px rgba(26,111,219,0.08);
   }
 
   .logo {
@@ -97,7 +98,7 @@
   .nav-btn:hover, .nav-btn.active {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(0,212,255,0.06);
+    background: rgba(26,111,219,0.08);
   }
 
   .btn-add {
@@ -116,7 +117,7 @@
     align-items: center;
     gap: .4rem;
   }
-  .btn-add:hover { background: #00eeff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,212,255,0.3); }
+  .btn-add:hover { background: #1558b8; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(26,111,219,0.35); }
 
   /* ─── HERO ─── */
   .hero {
@@ -143,7 +144,7 @@
     line-height: 1.08;
     margin-bottom: 1rem;
     letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #fff 0%, var(--accent) 60%);
+    background: linear-gradient(135deg, #0a2a6e 0%, #1a6fdb 60%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -230,7 +231,7 @@
     font-family: var(--mono);
     color: var(--muted);
   }
-  .tab.active .badge { background: rgba(0,212,255,0.12); color: var(--accent); }
+  .tab.active .badge { background: rgba(26,111,219,0.12); color: var(--accent); }
 
   /* ─── CONTENT PANEL ─── */
   .panel { display: none; }
@@ -262,7 +263,7 @@
   .card:hover {
     border-color: var(--accent);
     transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,212,255,0.1);
+    box-shadow: 0 8px 32px rgba(26,111,219,0.15), 0 0 0 1px rgba(26,111,219,0.1);
   }
 
   .card-accent-bar {
@@ -289,9 +290,9 @@
     letter-spacing: .05em;
     font-weight: 700;
   }
-  .tag-lesson  { color: var(--accent3); border-color: var(--accent3); background: rgba(16,185,129,0.08); }
-  .tag-exercise { color: var(--warn);   border-color: var(--warn);   background: rgba(245,158,11,0.08); }
-  .tag-theory  { color: var(--accent2); border-color: var(--accent2); background: rgba(124,58,237,0.08); }
+  .tag-lesson  { color: #047857; border-color: #047857; background: rgba(5,150,105,0.1); }
+  .tag-exercise { color: #b45309; border-color: #b45309; background: rgba(217,119,6,0.1); }
+  .tag-theory  { color: #5b21b6; border-color: #5b21b6; background: rgba(109,40,217,0.1); }
 
   .difficulty {
     margin-left: auto;
@@ -309,7 +310,7 @@
     margin-bottom: .5rem;
     line-height: 1.4;
     letter-spacing: -0.01em;
-    color: #f0f4f8;
+    color: #0f2a5e;
   }
 
   .card p {
@@ -378,14 +379,14 @@
 
   /* ─── CODE BLOCK inside card ─── */
   .code-snippet {
-    background: #060a10;
-    border: 1px solid var(--border);
+    background: #e8f1fb;
+    border: 1px solid #b8d0f0;
     border-radius: 6px;
     padding: .8rem 1rem;
     margin-top: .8rem;
     font-family: var(--mono);
     font-size: .75rem;
-    color: #94d1e0;
+    color: #1a4a8a;
     overflow-x: auto;
     white-space: pre;
     line-height: 1.6;
@@ -395,7 +396,7 @@
   .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.7);
+    background: rgba(10,30,80,.5);
     backdrop-filter: blur(6px);
     z-index: 200;
     display: none;
@@ -508,7 +509,7 @@
     cursor: pointer;
     transition: all .2s;
   }
-  .btn-save:hover { background: #00eeff; box-shadow: 0 4px 16px rgba(0,212,255,.3); }
+  .btn-save:hover { background: #1558b8; box-shadow: 0 4px 16px rgba(26,111,219,.3); }
 
   /* ─── VIEW MODAL ─── */
   .view-modal { max-width: 700px; }
@@ -516,13 +517,13 @@
   .view-modal .vm-title { font-size: 1.5rem; font-weight: 800; margin-bottom: .6rem; letter-spacing: -0.02em; line-height: 1.25; }
   .view-modal .vm-desc  { color: var(--muted); font-size: .95rem; line-height: 1.8; margin-bottom: 1rem; font-weight: 400; }
   .view-modal .vm-code  {
-    background: #060a10;
-    border: 1px solid var(--border);
+    background: #e8f1fb;
+    border: 1px solid #b8d0f0;
     border-radius: 8px;
     padding: 1rem 1.2rem;
     font-family: var(--mono);
     font-size: .8rem;
-    color: #94d1e0;
+    color: #1a4a8a;
     overflow-x: auto;
     white-space: pre;
     line-height: 1.7;
@@ -591,7 +592,7 @@
   .filter-pill:hover, .filter-pill.active {
     border-color: var(--accent);
     color: var(--accent);
-    background: rgba(0,212,255,0.06);
+    background: rgba(26,111,219,0.08);
   }
 
   /* ─── MAIN PAGES ─── */
@@ -628,7 +629,7 @@
     gap: 1rem;
     transition: all .2s;
   }
-  .student-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.3); }
+  .student-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(26,111,219,0.12); }
 
   .s-avatar {
     width: 48px; height: 48px;
@@ -650,9 +651,9 @@
     font-weight: 700;
     flex-shrink: 0;
   }
-  .s-badge.top    { background: rgba(0,212,255,0.12); color: var(--accent); border: 1px solid rgba(0,212,255,0.25); }
-  .s-badge.active { background: rgba(16,185,129,0.12); color: var(--accent3); border: 1px solid rgba(16,185,129,0.25); }
-  .s-badge.new    { background: rgba(245,158,11,0.12); color: var(--warn); border: 1px solid rgba(245,158,11,0.25); }
+  .s-badge.top    { background: rgba(26,111,219,0.1); color: #1a6fdb; border: 1px solid rgba(26,111,219,0.25); }
+  .s-badge.active { background: rgba(5,150,105,0.1);  color: #047857;  border: 1px solid rgba(5,150,105,0.25);  }
+  .s-badge.new    { background: rgba(217,119,6,0.1);  color: #b45309;  border: 1px solid rgba(217,119,6,0.25);  }
 
   .add-student-btn {
     background: none;
@@ -768,7 +769,7 @@
   .login-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.85);
+    background: rgba(10,30,80,.6);
     backdrop-filter: blur(12px);
     z-index: 500;
     display: none;
@@ -791,8 +792,8 @@
 
   .login-icon {
     width: 52px; height: 52px;
-    background: rgba(0,212,255,0.1);
-    border: 1px solid rgba(0,212,255,0.25);
+    background: rgba(26,111,219,0.1);
+    border: 1px solid rgba(26,111,219,0.3);
     border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
     font-size: 1.4rem;
@@ -866,7 +867,7 @@
     transition: all .2s;
     letter-spacing: .01em;
   }
-  .btn-login:hover { background: #00eeff; box-shadow: 0 4px 20px rgba(0,212,255,.3); }
+  .btn-login:hover { background: #1558b8; box-shadow: 0 4px 20px rgba(26,111,219,.3); }
 
   .login-cancel {
     display: block;
@@ -886,8 +887,8 @@
     display: none;
     align-items: center;
     gap: .5rem;
-    background: rgba(0,212,255,0.08);
-    border: 1px solid rgba(0,212,255,0.2);
+    background: rgba(26,111,219,0.1);
+    border: 1px solid rgba(26,111,219,0.3);
     border-radius: 20px;
     padding: .3rem .9rem .3rem .6rem;
     font-size: .78rem;
@@ -897,7 +898,7 @@
     transition: all .2s;
     margin-right: .25rem;
   }
-  .teacher-badge:hover { background: rgba(0,212,255,0.14); }
+  .teacher-badge:hover { background: rgba(26,111,219,0.18); }
   .teacher-badge .tb-dot {
     width: 7px; height: 7px; border-radius: 50%;
     background: var(--accent);
@@ -962,7 +963,7 @@
   }
   .attach-tab:last-child { border-right: none; }
   .attach-tab.active {
-    background: rgba(0,212,255,0.1);
+    background: rgba(26,111,219,0.1);
     color: var(--accent);
     font-weight: 600;
   }
@@ -1178,7 +1179,7 @@
   .fv-code-wrap pre {
     font-family: var(--mono);
     font-size: .85rem;
-    color: #94d1e0;
+    color: #1a4a8a;
     line-height: 1.75;
     white-space: pre;
     tab-size: 4;
@@ -1210,8 +1211,8 @@
   .card-attach-view {
     margin-left: auto;
     flex-shrink: 0;
-    background: rgba(0,212,255,0.08);
-    border: 1px solid rgba(0,212,255,0.2);
+    background: rgba(26,111,219,0.1);
+    border: 1px solid rgba(26,111,219,0.25);
     border-radius: 5px;
     color: var(--accent);
     font-size: .72rem;
@@ -1222,19 +1223,221 @@
     white-space: nowrap;
     font-family: var(--sans);
   }
-  .card-attach-view:hover { background: rgba(0,212,255,0.18); }
+  .card-attach-view:hover { background: rgba(26,111,219,0.2); }
 
   /* ─── SCROLLBAR ─── */
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--surface); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-track { background: #e8f1fb; }
+  ::-webkit-scrollbar-thumb { background: #b8d0f0; border-radius: 3px; }
 
-  @media (max-width: 640px) {
-    header { padding: 0 1rem; }
-    .hero, .tabs-wrap, .stats-bar { padding-left: 1rem; padding-right: 1rem; }
-    .row2 { grid-template-columns: 1fr; }
-    nav .nav-btn:not(:last-child) { display: none; }
+  /* ─── CLASSROOM LAYOUT ─── */
+  .classroom-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 1.5rem;
+    align-items: start;
   }
+
+  @media (max-width: 860px) {
+    .classroom-layout {
+      grid-template-columns: 1fr;
+    }
+    .accordion-sidebar {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: .6rem;
+    }
+  }
+
+  /* ─── ACCORDION SIDEBAR ─── */
+  .accordion-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    position: sticky;
+    top: 76px;
+  }
+
+  .acc-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .acc-header {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .75rem 1rem;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--text);
+    transition: background .15s;
+    text-align: left;
+  }
+  .acc-header:hover { background: var(--surface2); }
+  .acc-header.active {
+    background: rgba(26,111,219,0.07);
+    color: var(--accent);
+  }
+  .acc-header.active .acc-badge {
+    background: rgba(26,111,219,0.15);
+    color: var(--accent);
+  }
+
+  .acc-icon { font-size: 1rem; flex-shrink: 0; }
+  .acc-title { flex: 1; }
+
+  .acc-badge {
+    background: var(--surface2);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: .7rem;
+    font-weight: 700;
+    padding: .1rem .45rem;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .acc-chevron {
+    font-size: .75rem;
+    color: var(--muted);
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+  .acc-body.open + .acc-header .acc-chevron,
+  .acc-header[aria-expanded="true"] .acc-chevron { transform: rotate(180deg); }
+  .acc-section.open > .acc-header .acc-chevron { transform: rotate(180deg); }
+
+  .acc-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+  }
+  .acc-body.open {
+    max-height: 600px;
+  }
+
+  .acc-body-inner {
+    padding: .6rem .8rem .8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Filter pills inside accordion */
+  .acc-filter-group {
+    padding: .5rem .8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    align-items: center;
+    border-top: 1px solid var(--border);
+  }
+  .acc-filter-group:first-child { border-top: none; }
+  .acc-filter-label {
+    width: 100%;
+    font-size: .68rem;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: .1rem;
+  }
+  .acc-pill {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: .78rem;
+    font-weight: 500;
+    padding: .2rem .7rem;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .acc-pill:hover, .acc-pill.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(26,111,219,0.08);
+  }
+
+  /* Item list inside accordion */
+  .acc-list {
+    padding: .4rem .5rem .6rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+
+  .acc-item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .45rem .7rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: .83rem;
+    color: var(--text);
+    font-weight: 500;
+    transition: background .15s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .acc-item:hover { background: var(--surface2); }
+  .acc-item.selected {
+    background: rgba(26,111,219,0.1);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .acc-item-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .acc-item-diff {
+    margin-left: auto;
+    font-size: .68rem;
+    font-family: var(--mono);
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  /* Card grid wrap */
+  .card-grid-wrap { min-width: 0; }
+
+  /* Section heading above cards */
+  .cards-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: .6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .cards-section-head h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .cards-section-count {
+    font-family: var(--mono);
+    font-size: .78rem;
+    color: var(--muted);
+  }
+
 </style>
 </head>
 <body>
@@ -1285,29 +1488,94 @@
   <div class="stat-chip"><div class="dot" style="background:#00d4ff"></div><div><div class="num" id="st-total">0</div><div class="lbl">Tổng nội dung</div></div></div>
   <div class="stat-chip"><div class="dot" style="background:#10b981"></div><div><div class="num" id="st-lesson">0</div><div class="lbl">Bài học</div></div></div>
   <div class="stat-chip"><div class="dot" style="background:#f59e0b"></div><div><div class="num" id="st-exercise">0</div><div class="lbl">Bài tập</div></div></div>
-  <div class="stat-chip"><div class="dot" style="background:#7c3aed"></div><div><div class="num" id="st-theory">0</div><div class="lbl">Lý thuyết</div></div></div>
+  <div class="stat-chip"><div class="dot" style="background:#7c3aed"></div><div><div class="num" id="st-theory">0</div><div class="lbl">Kiến thức hỗ trợ</div></div></div>
 </div>
 
 <!-- TABS + CONTENT -->
 <div class="tabs-wrap">
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab('all',this)">📚 Tất Cả <span class="badge" id="b-all">0</span></button>
-    <button class="tab" onclick="switchTab('lesson',this)">✏️ Bài Học <span class="badge" id="b-lesson">0</span></button>
-    <button class="tab" onclick="switchTab('exercise',this)">🧪 Bài Tập <span class="badge" id="b-exercise">0</span></button>
-    <button class="tab" onclick="switchTab('theory',this)">📖 Lý Thuyết <span class="badge" id="b-theory">0</span></button>
+
+  <!-- ─── SEARCH BAR ─── -->
+  <div class="search-wrap">
+    <input type="text" placeholder="Tìm kiếm nội dung, ngôn ngữ, mô tả..." id="searchInput" oninput="renderAll()">
   </div>
 
-  <!-- SEARCH & FILTER -->
-  <div class="search-wrap"><input type="text" placeholder="Tìm kiếm nội dung..." id="searchInput" oninput="renderCards()"></div>
-  <div class="filters">
-    <button class="filter-pill active" onclick="setFilter('all',this)">Tất cả</button>
-    <button class="filter-pill" onclick="setFilter('easy',this)">Dễ</button>
-    <button class="filter-pill" onclick="setFilter('medium',this)">Trung bình</button>
-    <button class="filter-pill" onclick="setFilter('hard',this)">Khó</button>
-    <button class="filter-pill" onclick="setFilter('code',this)">Có code mẫu</button>
+  <!-- ─── MAIN LAYOUT: sidebar accordion + card grid ─── -->
+  <div class="classroom-layout">
+
+    <!-- LEFT: Accordion dropdowns -->
+    <aside class="accordion-sidebar">
+
+      <!-- ALL / summary -->
+      <div class="acc-section" id="acc-all">
+        <button class="acc-header active" onclick="toggleAccordion('all', this)">
+          <span class="acc-icon">📚</span>
+          <span class="acc-title">Tất Cả Nội Dung</span>
+          <span class="acc-badge" id="ab-all">0</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body open" id="ab-body-all">
+          <div class="acc-filter-group">
+            <div class="acc-filter-label">Độ khó</div>
+            <button class="acc-pill active" onclick="setDiffFilter('all',this)">Tất cả</button>
+            <button class="acc-pill" onclick="setDiffFilter('easy',this)">🟢 Dễ</button>
+            <button class="acc-pill" onclick="setDiffFilter('medium',this)">🟡 Trung bình</button>
+            <button class="acc-pill" onclick="setDiffFilter('hard',this)">🔴 Khó</button>
+          </div>
+          <div class="acc-filter-group">
+            <div class="acc-filter-label">Khác</div>
+            <button class="acc-pill" id="pill-code" onclick="toggleCodeFilter(this)">💻 Có code mẫu</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BÀI HỌC -->
+      <div class="acc-section" id="acc-lesson">
+        <button class="acc-header" onclick="toggleAccordion('lesson', this)">
+          <span class="acc-icon">✏️</span>
+          <span class="acc-title">Bài Học</span>
+          <span class="acc-badge" id="ab-lesson">0</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body" id="ab-body-lesson">
+          <div class="acc-list" id="acc-list-lesson"></div>
+        </div>
+      </div>
+
+      <!-- BÀI TẬP -->
+      <div class="acc-section" id="acc-exercise">
+        <button class="acc-header" onclick="toggleAccordion('exercise', this)">
+          <span class="acc-icon">🧪</span>
+          <span class="acc-title">Bài Tập</span>
+          <span class="acc-badge" id="ab-exercise">0</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body" id="ab-body-exercise">
+          <div class="acc-list" id="acc-list-exercise"></div>
+        </div>
+      </div>
+
+      <!-- KIẾN THỨC HỖ TRỢ -->
+      <div class="acc-section" id="acc-theory">
+        <button class="acc-header" onclick="toggleAccordion('theory', this)">
+          <span class="acc-icon">📖</span>
+          <span class="acc-title">Kiến Thức Hỗ Trợ</span>
+          <span class="acc-badge" id="ab-theory">0</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body" id="ab-body-theory">
+          <div class="acc-list" id="acc-list-theory"></div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT: Card grid -->
+    <div class="card-grid-wrap">
+      <div id="cardContainer" class="card-grid"></div>
+    </div>
+
   </div>
 
-  <div id="cardContainer" class="card-grid"></div>
 </div>
 
 </div><!-- end page-classroom -->
@@ -1352,7 +1620,7 @@
           <select id="f-type">
             <option value="lesson">Bài Học</option>
             <option value="exercise">Bài Tập</option>
-            <option value="theory">Lý Thuyết</option>
+            <option value="theory">Kiến Thức Hỗ Trợ</option>
           </select>
         </div>
         <div class="field">
@@ -1388,6 +1656,7 @@
         <label>📎 Đính Kèm (tuỳ chọn)</label>
         <div class="attach-tabs">
           <button type="button" class="attach-tab active" onclick="switchAttachTab('file',this)">📁 File / Ảnh</button>
+          <button type="button" class="attach-tab" onclick="switchAttachTab('html',this)">🌐 File HTML</button>
           <button type="button" class="attach-tab" onclick="switchAttachTab('youtube',this)">▶️ YouTube</button>
           <button type="button" class="attach-tab" onclick="switchAttachTab('link',this)">🔗 Link ngoài</button>
         </div>
@@ -1401,6 +1670,17 @@
             <div class="file-drop-hint">PDF, Word, PowerPoint, ảnh, code... (tối đa 5MB)</div>
           </div>
           <div id="filePreviewArea"></div>
+        </div>
+
+        <!-- Panel: HTML upload -->
+        <div class="attach-panel" id="ap-html">
+          <div class="file-drop-zone" id="htmlDropZone" style="border-color: rgba(26,111,219,0.4); background: rgba(26,111,219,0.03);">
+            <input type="file" id="f-html" accept=".html,.htm" onchange="handleHtmlSelect(this)">
+            <div class="file-drop-icon">🌐</div>
+            <div class="file-drop-text">Kéo thả file HTML vào đây hoặc <strong>nhấn để chọn</strong></div>
+            <div class="file-drop-hint">Chỉ chấp nhận file .html, .htm — Học sinh có thể xem trực tiếp trong trình duyệt</div>
+          </div>
+          <div id="htmlPreviewArea"></div>
         </div>
 
         <!-- Panel: YouTube -->
@@ -1511,7 +1791,7 @@ function doLogin() {
     document.body.classList.add('teacher-mode');
     sessionStorage.setItem('cc_teacher', '1');
     closeLogin();
-    renderCards(); // re-render để hiện nút edit/delete
+    renderAll(); // re-render để hiện nút edit/delete
   } else {
     const input = document.getElementById('pwInput');
     const err   = document.getElementById('loginErr');
@@ -1528,7 +1808,7 @@ function logoutTeacher() {
   isTeacher = false;
   document.body.classList.remove('teacher-mode');
   sessionStorage.removeItem('cc_teacher');
-  renderCards();
+  renderAll();
 }
 
 function togglePwVis() {
@@ -1633,7 +1913,7 @@ function renderStats() {
         </div>
         <div class="stats-big-card" style="--card-color:#7c3aed">
           <div class="sbc-num">${theories}</div>
-          <div class="sbc-label">Lý Thuyết</div>
+          <div class="sbc-label">Kiến Thức Hỗ Trợ</div>
           <div class="sbc-sub">${total ? Math.round(theories/total*100) : 0}% tổng số</div>
         </div>
         <div class="stats-big-card" style="--card-color:#94a3b8">
@@ -1662,7 +1942,7 @@ function renderStats() {
         <div class="bar-count">${exercises}</div>
       </div>
       <div class="bar-row">
-        <div class="bar-label">Lý Thuyết</div>
+        <div class="bar-label">Kiến Thức Hỗ Trợ</div>
         <div class="bar-track"><div class="bar-fill" style="width:${theories/maxType*100}%;background:#7c3aed"></div></div>
         <div class="bar-count">${theories}</div>
       </div>
@@ -1851,8 +2131,9 @@ function renderUnsupported(body, a) {
 }
 
 // ─── FILE VIEWER ──────────────────────────────────────────────
-let currentAttachType = 'file'; // 'file' | 'youtube' | 'link'
+let currentAttachType = 'file'; // 'file' | 'html' | 'youtube' | 'link'
 let pendingFileData   = null;   // { name, size, type, dataUrl }
+let pendingHtmlData   = null;   // { name, size, content }
 
 function switchAttachTab(type, el) {
   currentAttachType = type;
@@ -1876,6 +2157,39 @@ function handleFileSelect(input) {
     renderFilePreview();
   };
   reader.readAsDataURL(file);
+}
+
+function handleHtmlSelect(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 2 * 1024 * 1024) {
+    alert('File HTML quá lớn! Vui lòng chọn file nhỏ hơn 2MB.');
+    input.value = '';
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = e => {
+    pendingHtmlData = { name: file.name, size: file.size, content: e.target.result };
+    renderHtmlPreview();
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+function renderHtmlPreview() {
+  const area = document.getElementById('htmlPreviewArea');
+  if (!pendingHtmlData) { area.innerHTML = ''; return; }
+  area.innerHTML = `<div class="file-preview">
+    <span class="fp-icon">🌐</span>
+    <span class="fp-name">${esc(pendingHtmlData.name)}</span>
+    <span class="fp-size">${formatFileSize(pendingHtmlData.size)}</span>
+    <button class="fp-remove" onclick="clearHtmlData()" title="Xóa">✕</button>
+  </div>`;
+}
+
+function clearHtmlData() {
+  pendingHtmlData = null;
+  document.getElementById('f-html').value = '';
+  document.getElementById('htmlPreviewArea').innerHTML = '';
 }
 
 function renderFilePreview() {
@@ -1936,11 +2250,15 @@ function previewYoutube(url) {
 function resetAttachFields() {
   currentAttachType = 'file';
   pendingFileData   = null;
+  pendingHtmlData   = null;
   document.querySelectorAll('.attach-tab').forEach((t,i) => t.classList.toggle('active', i===0));
   document.querySelectorAll('.attach-panel').forEach((p,i) => p.classList.toggle('active', i===0));
   const fi = document.getElementById('f-file');
   if (fi) fi.value = '';
   document.getElementById('filePreviewArea').innerHTML = '';
+  const hi = document.getElementById('f-html');
+  if (hi) hi.value = '';
+  document.getElementById('htmlPreviewArea').innerHTML = '';
   document.getElementById('f-youtube').value = '';
   document.getElementById('ytPreview').innerHTML = '';
   document.getElementById('f-link').value = '';
@@ -1955,12 +2273,16 @@ function loadAttachIntoForm(it) {
   if (a.type === 'file') {
     pendingFileData = { name: a.name, size: a.size, type: a.mime, dataUrl: a.dataUrl };
     renderFilePreview();
+  } else if (a.type === 'html') {
+    switchAttachTab('html', document.querySelectorAll('.attach-tab')[1]);
+    pendingHtmlData = { name: a.name, size: a.size, content: a.content };
+    renderHtmlPreview();
   } else if (a.type === 'youtube') {
-    switchAttachTab('youtube', document.querySelectorAll('.attach-tab')[1]);
+    switchAttachTab('youtube', document.querySelectorAll('.attach-tab')[2]);
     document.getElementById('f-youtube').value = a.url;
     previewYoutube(a.url);
   } else if (a.type === 'link') {
-    switchAttachTab('link', document.querySelectorAll('.attach-tab')[2]);
+    switchAttachTab('link', document.querySelectorAll('.attach-tab')[3]);
     document.getElementById('f-link').value = a.url;
     document.getElementById('f-link-label').value = a.label || '';
   }
@@ -1971,6 +2293,9 @@ function buildAttachFromForm() {
   if (currentAttachType === 'file') {
     if (!pendingFileData) return null;
     return { type: 'file', name: pendingFileData.name, size: pendingFileData.size, mime: pendingFileData.type, dataUrl: pendingFileData.dataUrl };
+  } else if (currentAttachType === 'html') {
+    if (!pendingHtmlData) return null;
+    return { type: 'html', name: pendingHtmlData.name, size: pendingHtmlData.size, content: pendingHtmlData.content };
   } else if (currentAttachType === 'youtube') {
     const url = document.getElementById('f-youtube').value.trim();
     const id  = extractYoutubeId(url);
@@ -1985,22 +2310,39 @@ function buildAttachFromForm() {
   return null;
 }
 
-// Drag-and-drop on file zone
 document.addEventListener('DOMContentLoaded', () => {
   const zone = document.getElementById('fileDropZone');
-  if (!zone) return;
-  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
-  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
-  zone.addEventListener('drop', e => {
-    e.preventDefault(); zone.classList.remove('dragover');
-    const file = e.dataTransfer.files[0];
-    if (file) {
-      const dt = new DataTransfer(); dt.items.add(file);
-      const fi = document.getElementById('f-file');
-      fi.files = dt.files;
-      handleFileSelect(fi);
-    }
-  });
+  if (zone) {
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+    zone.addEventListener('drop', e => {
+      e.preventDefault(); zone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        const dt = new DataTransfer(); dt.items.add(file);
+        const fi = document.getElementById('f-file');
+        fi.files = dt.files;
+        handleFileSelect(fi);
+      }
+    });
+  }
+  const htmlZone = document.getElementById('htmlDropZone');
+  if (htmlZone) {
+    htmlZone.addEventListener('dragover', e => { e.preventDefault(); htmlZone.classList.add('dragover'); });
+    htmlZone.addEventListener('dragleave', () => htmlZone.classList.remove('dragover'));
+    htmlZone.addEventListener('drop', e => {
+      e.preventDefault(); htmlZone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && (file.name.endsWith('.html') || file.name.endsWith('.htm'))) {
+        const dt = new DataTransfer(); dt.items.add(file);
+        const hi = document.getElementById('f-html');
+        hi.files = dt.files;
+        handleHtmlSelect(hi);
+      } else if (file) {
+        alert('Vui lòng chọn file .html hoặc .htm!');
+      }
+    });
+  }
 });
 
 // ─── DATA STORE ───────────────────────────────────────────────
@@ -2008,9 +2350,10 @@ let items = JSON.parse(localStorage.getItem('codeclass') || '[]');
 let editingId = null;
 let currentTab = 'all';
 let currentFilter = 'all';
+let codeFilterOn = false;
 
 const COLORS = { lesson: '#10b981', exercise: '#f59e0b', theory: '#7c3aed' };
-const LABELS = { lesson: 'Bài Học', exercise: 'Bài Tập', theory: 'Lý Thuyết' };
+const LABELS = { lesson: 'Bài Học', exercise: 'Bài Tập', theory: 'Kiến Thức Hỗ Trợ' };
 const DIFF_LABEL = { easy: 'Dễ', medium: 'Trung bình', hard: 'Khó' };
 
 // ─── SAMPLE DATA ──────────────────────────────────────────────
@@ -2060,27 +2403,139 @@ function save() {
   localStorage.setItem('codeclass', JSON.stringify(items));
   updateStats();
   updateBadges();
+  renderAll();
 }
 
-// ─── RENDER ───────────────────────────────────────────────────
-function renderCards() {
-  const q = document.getElementById('searchInput').value.toLowerCase();
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function updateStats() {
+  document.getElementById('st-total').textContent    = items.length;
+  document.getElementById('st-lesson').textContent   = items.filter(x=>x.type==='lesson').length;
+  document.getElementById('st-exercise').textContent = items.filter(x=>x.type==='exercise').length;
+  document.getElementById('st-theory').textContent   = items.filter(x=>x.type==='theory').length;
+}
+
+function updateBadges() {
+  document.getElementById('ab-all').textContent      = items.length;
+  document.getElementById('ab-lesson').textContent   = items.filter(x=>x.type==='lesson').length;
+  document.getElementById('ab-exercise').textContent = items.filter(x=>x.type==='exercise').length;
+  document.getElementById('ab-theory').textContent   = items.filter(x=>x.type==='theory').length;
+  renderAccordionLists();
+}
+
+// ─── ACCORDION / FILTERS ─────────────────────────────────────
+let selectedItemId = null; // when clicking a specific item in accordion list
+
+function toggleAccordion(type, headerEl) {
+  const bodyEl = document.getElementById('ab-body-' + type);
+  const section = headerEl.closest('.acc-section');
+  const isOpen  = bodyEl.classList.contains('open');
+
+  // If clicking a tab that changes the type filter, update currentTab
+  if (type !== currentTab) {
+    currentTab = type;
+    selectedItemId = null;
+  }
+
+  // Toggle open state
+  bodyEl.classList.toggle('open', !isOpen);
+  section.classList.toggle('open', !isOpen);
+
+  // Update active header styles
+  document.querySelectorAll('.acc-header').forEach(h => h.classList.remove('active'));
+  headerEl.classList.add('active');
+
+  renderAll();
+}
+
+function setDiffFilter(f, el) {
+  currentFilter = f;
+  document.querySelectorAll('.acc-pill').forEach(p => {
+    if (!p.id) p.classList.remove('active'); // only diff pills
+  });
+  el.classList.add('active');
+  selectedItemId = null;
+  renderAll();
+}
+
+function toggleCodeFilter(btn) {
+  codeFilterOn = !codeFilterOn;
+  btn.classList.toggle('active', codeFilterOn);
+  renderAll();
+}
+
+function selectItem(id) {
+  selectedItemId = (selectedItemId === id) ? null : id;
+  renderAll();
+}
+
+function renderAccordionLists() {
+  ['lesson','exercise','theory'].forEach(type => {
+    const list = document.getElementById('acc-list-' + type);
+    if (!list) return;
+    const typeItems = items.filter(x => x.type === type);
+    if (!typeItems.length) {
+      list.innerHTML = `<div style="padding:.5rem .7rem;font-size:.8rem;color:var(--muted)">Chưa có nội dung</div>`;
+      return;
+    }
+    list.innerHTML = typeItems.map(it => `
+      <div class="acc-item ${selectedItemId === it.id ? 'selected' : ''}" onclick="selectItem(${it.id})">
+        <div class="acc-item-dot" style="background:${COLORS[it.type]}"></div>
+        <span style="flex:1;overflow:hidden;text-overflow:ellipsis">${esc(it.title)}</span>
+        <span class="acc-item-diff diff-${it.diff}">${DIFF_LABEL[it.diff]}</span>
+      </div>
+    `).join('');
+  });
+}
+
+function renderAll() {
+  renderAccordionLists();
+
+  const q = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
   const container = document.getElementById('cardContainer');
+  if (!container) return;
 
   let data = items.filter(it => {
+    // If a specific item is selected from accordion list, show only that
+    if (selectedItemId !== null) return it.id === selectedItemId;
+    // Tab filter
     if (currentTab !== 'all' && it.type !== currentTab) return false;
-    if (currentFilter === 'code' && !it.code.trim()) return false;
+    // Difficulty filter
     if (['easy','medium','hard'].includes(currentFilter) && it.diff !== currentFilter) return false;
-    if (q && !it.title.toLowerCase().includes(q) && !it.desc.toLowerCase().includes(q) && !(it.lang||'').toLowerCase().includes(q)) return false;
+    // Code filter
+    if (codeFilterOn && !(it.code && it.code.trim())) return false;
+    // Search
+    if (q) {
+      const haystack = [it.title, it.desc, it.lang||'', it.author||''].join(' ').toLowerCase();
+      if (!haystack.includes(q)) return false;
+    }
     return true;
   });
 
+  // Section heading
+  let headingText = 'Tất Cả Nội Dung';
+  if (selectedItemId !== null) {
+    const sel = items.find(x => x.id === selectedItemId);
+    headingText = sel ? sel.title : 'Nội dung';
+  } else if (currentTab !== 'all') {
+    headingText = LABELS[currentTab];
+  }
+  if (q) headingText = `Kết quả tìm kiếm: "${q}"`;
+
+  const head = `<div class="cards-section-head">
+    <h3><span>${headingText}</span></h3>
+    <span class="cards-section-count">${data.length} mục</span>
+  </div>`;
+
   if (!data.length) {
-    container.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="big">🔍</div><p>Chưa có nội dung nào. Hãy thêm bài học đầu tiên!</p></div>`;
+    container.innerHTML = head + `<div class="empty"><div class="big">🔍</div><p>Không tìm thấy nội dung phù hợp.</p></div>`;
     return;
   }
 
-  container.innerHTML = data.map((it, i) => `
+  container.innerHTML = head + data.map((it, i) => `
     <div class="card" style="animation-delay:${i*40}ms" onclick="viewItem(${it.id})">
       <div class="card-accent-bar" style="background:${COLORS[it.type]}"></div>
       <div class="card-body">
@@ -2105,39 +2560,6 @@ function renderCards() {
       </div>
     </div>
   `).join('');
-}
-
-function esc(s) {
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-function updateStats() {
-  document.getElementById('st-total').textContent    = items.length;
-  document.getElementById('st-lesson').textContent   = items.filter(x=>x.type==='lesson').length;
-  document.getElementById('st-exercise').textContent = items.filter(x=>x.type==='exercise').length;
-  document.getElementById('st-theory').textContent   = items.filter(x=>x.type==='theory').length;
-}
-
-function updateBadges() {
-  document.getElementById('b-all').textContent      = items.length;
-  document.getElementById('b-lesson').textContent   = items.filter(x=>x.type==='lesson').length;
-  document.getElementById('b-exercise').textContent = items.filter(x=>x.type==='exercise').length;
-  document.getElementById('b-theory').textContent   = items.filter(x=>x.type==='theory').length;
-}
-
-// ─── TABS / FILTERS ───────────────────────────────────────────
-function switchTab(tab, el) {
-  currentTab = tab;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  renderCards();
-}
-
-function setFilter(f, el) {
-  currentFilter = f;
-  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  renderCards();
 }
 
 // ─── MODAL ADD/EDIT ───────────────────────────────────────────
@@ -2190,7 +2612,7 @@ function saveItem() {
     items.unshift(it);
   }
   save();
-  renderCards();
+  renderAll();
   closeAdd();
 }
 
@@ -2198,7 +2620,7 @@ function deleteItem(id) {
   if (!confirm('Xoá nội dung này?')) return;
   items = items.filter(x => x.id !== id);
   save();
-  renderCards();
+  renderAll();
 }
 
 // ─── VIEW MODAL ───────────────────────────────────────────────
@@ -2212,6 +2634,13 @@ function renderCardAttach(a) {
       <span>${icon}</span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(a.name)}</span>
       <span style="font-size:.7rem;opacity:.6;flex-shrink:0">${formatFileSize(a.size)}</span>
       ${canView ? `<button class="card-attach-view" onclick="event.stopPropagation();openFileViewerById(${items.findIndex(it=>it.attach===a)})">👁 Xem</button>` : `<a href="${a.dataUrl}" download="${esc(a.name)}" onclick="event.stopPropagation()" style="flex-shrink:0;font-size:.72rem;color:var(--muted)">⬇️</a>`}
+    </div>`;
+  }
+  if (a.type === 'html') {
+    return `<div class="card-attach" onclick="event.stopPropagation()">
+      <span>🌐</span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(a.name)}</span>
+      <span style="font-size:.7rem;opacity:.6;flex-shrink:0">${formatFileSize(a.size)}</span>
+      <button class="card-attach-view" onclick="event.stopPropagation();openHtmlViewerByAttach(${JSON.stringify(a).replace(/"/g,'&quot;')})">🌐 Xem</button>
     </div>`;
   }
   if (a.type === 'youtube') {
@@ -2281,6 +2710,31 @@ function viewItem(id) {
       </a>`;
       html += `</div>`;
       attachContent.innerHTML = html;
+    } else if (a.type === 'html') {
+      attachContent.innerHTML = `
+        <div style="margin-bottom:.8rem">
+          <span style="font-weight:600;color:var(--text)">🌐 ${esc(a.name)}</span>
+          <span style="font-size:.78rem;color:var(--muted);margin-left:.5rem">${formatFileSize(a.size)}</span>
+        </div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.8rem">
+          <button class="vm-attach-btn" id="vm-html-fullbtn-${it.id}" onclick="openHtmlViewerByContent(this.getAttribute('data-content'), '${esc(a.name).replace(/'/g,"\\'")}')">
+            🌐 Xem HTML toàn màn hình
+          </button>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
+          <div style="background:var(--surface2);padding:.4rem .8rem;font-size:.72rem;color:var(--muted);font-family:var(--mono);border-bottom:1px solid var(--border)">Xem trước — ${esc(a.name)}</div>
+          <iframe id="htmlInlinePreview-${it.id}" style="width:100%;height:350px;border:none;background:#fff" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>`;
+      setTimeout(() => {
+        const iframe = document.getElementById('htmlInlinePreview-' + it.id);
+        if (iframe) {
+          const blob = new Blob([a.content], { type: 'text/html' });
+          const blobUrl = URL.createObjectURL(blob);
+          iframe.src = blobUrl;
+          const btn = document.getElementById('vm-html-fullbtn-' + it.id);
+          if (btn) btn.setAttribute('data-content', a.content);
+        }
+      }, 50);
     } else if (a.type === 'youtube') {
       attachContent.innerHTML = `
         <div class="vm-embed">
@@ -2307,6 +2761,34 @@ function viewItem(id) {
 
 function closeView() { document.getElementById('viewModal').classList.remove('open'); }
 
+// ─── HTML VIEWER ──────────────────────────────────────────────
+function openHtmlViewerByContent(content, name) {
+  if (!content) return;
+  const blob = new Blob([content], { type: 'text/html' });
+  const url  = URL.createObjectURL(blob);
+  openHtmlViewerWindow(url, name);
+}
+
+function openHtmlViewerByAttach(a) {
+  if (!a || !a.content) return;
+  openHtmlViewerByContent(a.content, a.name);
+}
+
+function openHtmlViewerWindow(blobUrl, name) {
+  // Open in file viewer overlay
+  const fv = document.getElementById('fileViewer');
+  document.getElementById('fv-icon').textContent = '🌐';
+  document.getElementById('fv-name').textContent = name || 'file.html';
+  document.getElementById('fv-size').textContent = '';
+  const dl = document.getElementById('fv-download');
+  dl.href = blobUrl;
+  dl.download = name || 'file.html';
+  const body = document.getElementById('fv-body');
+  body.innerHTML = `<iframe src="${blobUrl}" style="width:100%;height:100%;border:none;background:#fff" sandbox="allow-scripts allow-same-origin" title="HTML Preview"></iframe>`;
+  fv.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
 // Close on overlay click
 document.querySelectorAll('.modal-overlay').forEach(o => {
   o.addEventListener('click', e => { if (e.target === o) { closeAdd(); closeView(); } });
@@ -2318,7 +2800,10 @@ document.getElementById('loginModal').addEventListener('click', e => {
 // ─── INIT ─────────────────────────────────────────────────────
 updateStats();
 updateBadges();
-renderCards();
+renderAll();
+// Open "Tất cả" by default
+document.getElementById('ab-body-all').classList.add('open');
+document.getElementById('acc-all').classList.add('open');
 </script>
 </body>
 </html>
